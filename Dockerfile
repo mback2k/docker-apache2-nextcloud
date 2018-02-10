@@ -16,7 +16,7 @@ RUN a2enmod rewrite headers env dir mime
 RUN mkdir -p /var/www
 WORKDIR /var/www
 
-ARG NEXTCLOUD_VERSION=12.0.5
+ARG NEXTCLOUD_VERSION=13.0.0
 
 ADD https://download.nextcloud.com/server/releases/nextcloud-${NEXTCLOUD_VERSION}.tar.bz2 /var/www
 RUN tar xfvj nextcloud-${NEXTCLOUD_VERSION}.tar.bz2
