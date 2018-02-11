@@ -9,12 +9,11 @@ if [ -n "${NEXTCLOUD_DATABASE_USER}" ]; then
 if [ -n "${NEXTCLOUD_DATABASE_PASS}" ]; then
 if [ -n "${NEXTCLOUD_ADMIN_USER}" ]; then
 if [ -n "${NEXTCLOUD_ADMIN_PASS}" ]; then
-    cd /var/www/nextcloud
-    sudo -u www-data php occ maintenance:install \
-        --data-dir "${NEXTCLOUD_DATA_DIR}" --database "${NEXTCLOUD_DATABASE}" \
-        --database-host "${NEXTCLOUD_DATABASE_HOST}" --database-name "${NEXTCLOUD_DATABASE_NAME}" \
-        --database-user "${NEXTCLOUD_DATABASE_USER}" --database-pass "${NEXTCLOUD_DATABASE_PASS}" \
-        --admin-user "${NEXTCLOUD_ADMIN_USER}" --admin-pass "${NEXTCLOUD_ADMIN_PASS}"
+    su -u www-data -c 'cd /var/www/nextcloud; php occ maintenance:install
+        --data-dir "${NEXTCLOUD_DATA_DIR}" --database "${NEXTCLOUD_DATABASE}"
+        --database-host "${NEXTCLOUD_DATABASE_HOST}" --database-name "${NEXTCLOUD_DATABASE_NAME}"
+        --database-user "${NEXTCLOUD_DATABASE_USER}" --database-pass "${NEXTCLOUD_DATABASE_PASS}"
+        --admin-user "${NEXTCLOUD_ADMIN_USER}" --admin-pass "${NEXTCLOUD_ADMIN_PASS}"'
 fi
 fi
 fi
