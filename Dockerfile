@@ -1,7 +1,5 @@
 FROM mback2k/apache2-php
 
-MAINTAINER Marc Hoersken "info@marc-hoersken.de"
-
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         php7.0-gd php7.0-json php7.0-xml php7.0-mbstring php7.0-zip \
