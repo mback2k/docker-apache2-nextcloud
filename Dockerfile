@@ -23,6 +23,9 @@ RUN chown root:root -R /var/www/nextcloud
 RUN chown www-data:www-data -R /var/www/nextcloud/apps
 RUN chown www-data:www-data -R /var/www/nextcloud/config
 
+VOLUME /var/www/nextcloud/apps
+VOLUME /var/www/nextcloud/config
+
 RUN mkdir -p /data
 RUN chown www-data:www-data -R /data
 
