@@ -25,9 +25,15 @@ RUN chown root:root -R /var/www/nextcloud
 RUN chown www-data:www-data -R /var/www/nextcloud/apps
 RUN chown www-data:www-data -R /var/www/nextcloud/config
 
-RUN mkdir -p /var/www/nextcloud/data
-RUN chown www-data:www-data -R /var/www/nextcloud/data
+RUN mkdir -p /data
+RUN chown www-data:www-data -R /data
 
-VOLUME /var/www/nextcloud/data
+VOLUME /data
 
+ENV NEXTCLOUD_DATA_DIR /data
+ENV NEXTCLOUD_DATABASE mysql
+ENV NEXTCLOUD_DATABASE_HOST mysql
+ENV NEXTCLOUD_DATABASE_NAME nextcloud
+
+ADD docker-entrypoint.d/ /run/docker-entrypoint.d/
 ADD docker-websites.d/ /run/docker-websites.d/
