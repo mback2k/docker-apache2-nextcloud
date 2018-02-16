@@ -18,7 +18,9 @@ ARG NEXTCLOUD_VERSION=13.0.0
 
 ADD https://download.nextcloud.com/server/releases/nextcloud-${NEXTCLOUD_VERSION}.tar.bz2 /var/www
 RUN tar xfvj nextcloud-${NEXTCLOUD_VERSION}.tar.bz2
+
 RUN chown root:root -R /var/www/nextcloud
+RUN chown www-data:www-data /var/www/nextcloud/.htaccess
 
 RUN chown www-data:www-data -R /var/www/nextcloud/apps
 RUN chown www-data:www-data -R /var/www/nextcloud/config
