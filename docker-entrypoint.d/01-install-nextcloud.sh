@@ -1,5 +1,13 @@
 #!/bin/sh
 
+if [ -f "${NEXTCLOUD_DATABASE_PASS_FILE}" ]; then
+    NEXTCLOUD_DATABASE_PASS="$(< "${NEXTCLOUD_DATABASE_PASS_FILE}")"
+fi
+
+if [ -f "${NEXTCLOUD_ADMIN_PASS_FILE}" ]; then
+    NEXTCLOUD_ADMIN_PASS="$(< "${NEXTCLOUD_ADMIN_PASS_FILE}")"
+fi
+
 if [ -d "${NEXTCLOUD_DATA_DIR}" ]; then
 if [ -n "${NEXTCLOUD_DATABASE}" ]; then
 if [ -n "${NEXTCLOUD_DATABASE_HOST}" ]; then
@@ -23,5 +31,8 @@ fi
 fi
 fi
 fi
+
+unset NEXTCLOUD_DATABASE_PASS
+unset NEXTCLOUD_ADMIN_PASS
 
 exit 0
