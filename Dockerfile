@@ -33,7 +33,8 @@ RUN mkdir -p /data
 RUN chown www-data:www-data -R /data
 VOLUME /data
 
-ADD opcache-recommended.ini /usr/local/etc/php/conf.d/opcache-recommended.ini
+ADD opcache-recommended.ini /etc/php/7.0/cli/conf.d/99-opcache-recommended.ini
+ADD opcache-recommended.ini /etc/php/7.0/apache2/conf.d/99-opcache-recommended.ini
 
 ENV NEXTCLOUD_DATA_DIR /data
 ENV NEXTCLOUD_DATABASE mysql
