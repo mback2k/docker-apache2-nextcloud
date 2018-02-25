@@ -22,15 +22,15 @@ RUN tar xfvj nextcloud-${NEXTCLOUD_VERSION}.tar.bz2
 RUN chown root:root -R /var/www/nextcloud
 RUN chown www-data:www-data /var/www/nextcloud/.htaccess
 
-RUN chown www-data:www-data -R /var/www/nextcloud/apps
 RUN chown www-data:www-data -R /var/www/nextcloud/config
-
-VOLUME /var/www/nextcloud/apps
 VOLUME /var/www/nextcloud/config
+
+RUN mkdir -p /var/www/nextcloud/custom_apps
+RUN chown www-data:www-data -R /var/www/nextcloud/custom_apps
+VOLUME /var/www/nextcloud/custom_apps
 
 RUN mkdir -p /data
 RUN chown www-data:www-data -R /data
-
 VOLUME /data
 
 ENV NEXTCLOUD_DATA_DIR /data
