@@ -9,7 +9,7 @@ RUN apt-get update && \
         bzip2 && \
     apt-get clean
 
-RUN a2enmod rewrite headers env dir mime
+RUN a2enmod rewrite headers env setenvif dir mime
 
 RUN mkdir -p /var/www
 WORKDIR /var/www
