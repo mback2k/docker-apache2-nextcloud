@@ -16,13 +16,13 @@ if [ -n "${NEXTCLOUD_DATABASE_USER}" ]; then
 if [ -n "${NEXTCLOUD_DATABASE_PASS}" ]; then
 if [ -n "${NEXTCLOUD_ADMIN_USER}" ]; then
 if [ -n "${NEXTCLOUD_ADMIN_PASS}" ]; then
-    su -s /bin/sh -c 'cd /var/www/nextcloud; php occ status' www-data | grep "installed: true"
+    runuser -u www-data -- /bin/sh -c 'cd /var/www/nextcloud; php occ status | grep "installed: true"'
     if [ $? -eq 0 ]; then exit 0; fi
-    su -s /bin/sh -c 'cd /var/www/nextcloud; php occ maintenance:install \
+    runuser -u www-data -- /bin/sh -c 'cd /var/www/nextcloud; php occ maintenance:install \
         --data-dir "${NEXTCLOUD_DATA_DIR}" --database "${NEXTCLOUD_DATABASE}" \
         --database-host "${NEXTCLOUD_DATABASE_HOST}" --database-name "${NEXTCLOUD_DATABASE_NAME}" \
         --database-user "${NEXTCLOUD_DATABASE_USER}" --database-pass "${NEXTCLOUD_DATABASE_PASS}" \
-        --admin-user "${NEXTCLOUD_ADMIN_USER}" --admin-pass "${NEXTCLOUD_ADMIN_PASS}"' www-data
+        --admin-user "${NEXTCLOUD_ADMIN_USER}" --admin-pass "${NEXTCLOUD_ADMIN_PASS}"'
 fi
 fi
 fi

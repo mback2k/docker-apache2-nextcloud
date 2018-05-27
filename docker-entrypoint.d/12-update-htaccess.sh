@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 
-su -s /bin/sh -c 'cd /var/www/nextcloud; php occ maintenance:update:htaccess' www-data
+runuser -u www-data -- /bin/sh -c 'cd /var/www/nextcloud; php occ maintenance:update:htaccess'
 
 exit 0
