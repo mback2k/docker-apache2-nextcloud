@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ -f "${NEXTCLOUD_DATABASE_PASS_FILE}" ]; then
     NEXTCLOUD_DATABASE_PASS="$(< "${NEXTCLOUD_DATABASE_PASS_FILE}")"
