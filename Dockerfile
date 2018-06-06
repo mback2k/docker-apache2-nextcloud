@@ -7,6 +7,8 @@ RUN apt-get update && \
         php7.0-curl php7.0-bz2 php7.0-intl php7.0-mcrypt \
         php7.0-ldap php7.0-imap php7.0-gmp php7.0-opcache \
         bzip2 && \
+    apt-get install -y --no-install-recommends \
+        msmtp msmtp-mta && \
     apt-get clean
 
 RUN a2enmod rewrite headers env setenvif dir mime
