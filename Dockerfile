@@ -38,6 +38,9 @@ RUN mkdir -p /data
 RUN chown www-data:www-data -R /data
 VOLUME /data
 
+ADD php-memory-limit.ini /etc/php/${PHP_VERSION}/cli/conf.d/99-php-memory-limit.ini
+ADD php-memory-limit.ini /etc/php/${PHP_VERSION}/apache2/conf.d/99-php-memory-limit.ini
+
 ADD opcache-recommended.ini /etc/php/${PHP_VERSION}/cli/conf.d/99-opcache-recommended.ini
 ADD opcache-recommended.ini /etc/php/${PHP_VERSION}/apache2/conf.d/99-opcache-recommended.ini
 
