@@ -46,4 +46,4 @@ ENV NEXTCLOUD_DATABASE_NAME nextcloud
 ADD docker-entrypoint.d/ /run/docker-entrypoint.d/
 ADD docker-websites.d/ /run/docker-websites.d/
 
-HEALTHCHECK CMD curl -f http://localhost/cron.php | grep '"status":"success"' || exit 1
+HEALTHCHECK CMD curl -f http://localhost/cron.php | grep '"status":"success"' || killall -0 run-parts || exit 1
