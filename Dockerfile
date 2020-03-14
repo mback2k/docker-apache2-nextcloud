@@ -1,11 +1,14 @@
 FROM mback2k/apache2-php
 
+ARG PHP_VERSION=7.2
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        php7.0-gd php7.0-json php7.0-xml php7.0-mbstring php7.0-zip \
-        php7.0-sqlite3 php7.0-mysql php7.0-pgsql \
-        php7.0-curl php7.0-bz2 php7.0-intl php7.0-mcrypt \
-        php7.0-ldap php7.0-imap php7.0-gmp php7.0-opcache \
+        php${PHP_VERSION}-gd php${PHP_VERSION}-json php${PHP_VERSION}-xml \
+        php${PHP_VERSION}-mbstring php${PHP_VERSION}-zip php${PHP_VERSION}-bz2 \
+        php${PHP_VERSION}-sqlite3 php${PHP_VERSION}-mysql php${PHP_VERSION}-pgsql \
+        php${PHP_VERSION}-curl php${PHP_VERSION}-ldap php${PHP_VERSION}-imap \
+        php${PHP_VERSION}-intl php${PHP_VERSION}-gmp php${PHP_VERSION}-opcache \
         php-redis openssl bzip2 && \
     apt-get install -y --no-install-recommends \
         msmtp msmtp-mta && \
@@ -35,8 +38,8 @@ RUN mkdir -p /data
 RUN chown www-data:www-data -R /data
 VOLUME /data
 
-ADD opcache-recommended.ini /etc/php/7.0/cli/conf.d/99-opcache-recommended.ini
-ADD opcache-recommended.ini /etc/php/7.0/apache2/conf.d/99-opcache-recommended.ini
+ADD opcache-recommended.ini /etc/php/${PHP_VERSION}/cli/conf.d/99-opcache-recommended.ini
+ADD opcache-recommended.ini /etc/php/${PHP_VERSION}/apache2/conf.d/99-opcache-recommended.ini
 
 ENV NEXTCLOUD_DATA_DIR /data
 ENV NEXTCLOUD_DATABASE mysql
