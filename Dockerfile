@@ -8,7 +8,7 @@ RUN apt-get update && \
         php${PHP_VERSION}-mbstring php${PHP_VERSION}-zip php${PHP_VERSION}-bz2 \
         php${PHP_VERSION}-sqlite3 php${PHP_VERSION}-mysql php${PHP_VERSION}-pgsql \
         php${PHP_VERSION}-curl php${PHP_VERSION}-ldap php${PHP_VERSION}-imap \
-        php${PHP_VERSION}-intl php${PHP_VERSION}-gmp php${PHP_VERSION}-opcache \
+        php${PHP_VERSION}-intl php${PHP_VERSION}-gmp \
         php-redis php-imagick openssl bzip2 && \
     apt-get install -y --no-install-recommends \
         msmtp msmtp-mta && \
@@ -37,12 +37,6 @@ VOLUME /var/www/nextcloud/custom_apps
 RUN mkdir -p /data
 RUN chown www-data:www-data -R /data
 VOLUME /data
-
-ADD php-memory-limit.ini /etc/php/${PHP_VERSION}/cli/conf.d/99-php-memory-limit.ini
-ADD php-memory-limit.ini /etc/php/${PHP_VERSION}/apache2/conf.d/99-php-memory-limit.ini
-
-ADD opcache-recommended.ini /etc/php/${PHP_VERSION}/cli/conf.d/99-opcache-recommended.ini
-ADD opcache-recommended.ini /etc/php/${PHP_VERSION}/apache2/conf.d/99-opcache-recommended.ini
 
 ENV NEXTCLOUD_DATA_DIR /data
 ENV NEXTCLOUD_DATABASE mysql
