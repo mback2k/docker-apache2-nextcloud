@@ -1,6 +1,6 @@
 FROM ghcr.io/mback2k/docker-apache2-php:latest
 
-ARG PHP_VERSION=7.2
+ARG PHP_VERSION=7.4
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
