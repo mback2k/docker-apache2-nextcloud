@@ -19,7 +19,7 @@ RUN a2enmod rewrite headers env setenvif dir mime
 RUN mkdir -p /var/www
 WORKDIR /var/www
 
-ARG NEXTCLOUD_VERSION=24.0.7
+ARG NEXTCLOUD_VERSION=25.0.1
 
 ADD https://download.nextcloud.com/server/releases/nextcloud-${NEXTCLOUD_VERSION}.tar.bz2 /var/www
 RUN tar xfvj nextcloud-${NEXTCLOUD_VERSION}.tar.bz2
